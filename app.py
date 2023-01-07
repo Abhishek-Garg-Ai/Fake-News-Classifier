@@ -74,8 +74,8 @@ ps = PorterStemmer()
 
 model = pickle.load(open('model.pkl', 'rb'))
 tfidfvect = pickle.load(open('tfidfvect.pkl', 'rb'))
-#cosmodel = pickle.load(open('cossmodel.pkl', 'rb'))
-cosmodel = SentenceTransformer('all-MiniLM-L6-v2')
+cosmodel = pickle.load(open('cossmodel.pkl', 'rb')).to('cpu')
+#cosmodel = SentenceTransformer('all-MiniLM-L6-v2')
 
 @app.route('/', methods=['GET'])
 def home():
