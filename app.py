@@ -83,13 +83,13 @@ def home():
 
 def predict(text):
     test_list = search(text, tld='co.in', num=10, stop=20, pause=2)
-    test_list = list(test_list)
+    #test_list = list(test_list)
     useless_domain = (
     'https://en.wikipedia', 'https://www.linkedin', 'https://in.linkedin', 'https://expertportals.com',
     'https://academictree.org', 'https://facebook.com', 'https://youtube.com', 'https://m.facebook.com',
     'https://www.facebook.com')
 
-    results = list(filter(lambda x: not x.startswith(useless_domain), test_list))
+    results = filter(lambda x: not x.startswith(useless_domain), test_list)
     summary_lt = []
     for url in tqdm(results[:min(len(results),8)]):
         reachable, summary = get_data(url)
