@@ -91,7 +91,7 @@ def predict(text):
 
     results = filter(lambda x: not x.startswith(useless_domain), test_list)
     summary_lt = []
-    for url in tqdm(results[:min(len(results),8)]):
+    for url in tqdm(results):
         reachable, summary = get_data(url)
         if (reachable):
             summary_lt.append(summary)
